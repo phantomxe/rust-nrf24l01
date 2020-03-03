@@ -18,12 +18,7 @@ impl CEPin {
                 "Unable to export CE",
             ))
         })?;
-        ce.set_direction(sysfs_gpio::Direction::Low).or_else(|_| {
-            Err(io::Error::new(
-                io::ErrorKind::PermissionDenied,
-                "Unable to set CE",
-            ))
-        })?;
+        ce.set_direction(Direction::Out).unwrap();
         Ok(CEPin {
             ce_pin: ce,
             value: 0,
