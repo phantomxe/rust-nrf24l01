@@ -18,7 +18,7 @@ impl CEPin {
                 "Unable to export CE",
             ))
         })?;
-        ce.set_direction(Direction::Out).unwrap();
+        ce.set_direction(sysfs_gpio::Direction::Out).unwrap();
         Ok(CEPin {
             ce_pin: ce,
             value: 0,
