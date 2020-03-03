@@ -466,8 +466,8 @@ impl NRF24L01 {
     ///
     /// System IO errors
     ///
-    pub fn new(ce_pin: u64, spi_device: u8) -> io::Result<NRF24L01> {
-        let mut spi = try!(spidev::Spidev::open(format!("/dev/spidev0.{}", spi_device)));
+    pub fn new(ce_pin: u64, spi_device_1: u8, spi_device_2: u8) -> io::Result<NRF24L01> {
+        let mut spi = try!(spidev::Spidev::open(format!("/dev/spidev{}.{}", spi_device_1, spi_device_0)));
         let options = spidev::SpidevOptions::new()
             .bits_per_word(8)
             .max_speed_hz(10_000_000)
